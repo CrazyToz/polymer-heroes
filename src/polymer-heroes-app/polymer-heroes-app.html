@@ -1,5 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="hero.html">>
+<link rel="import" href="hero.html">
+<link rel="import" href="add-hero.html">
 
 <dom-module id="polymer-heroes-app">
   <template>
@@ -8,9 +9,11 @@
         display: block;
       }
     </style>
-    <template is="dom-repeat" items="[[heroes]]">
-      <polymer-hero hero-name="[[item.heroName]]" power="[[item.power]]"></polymer-hero>
+    <h3>Heroes count : {{heroes.length}}</h3>
+    <template is="dom-repeat" items="{{heroes}}">
+      <polymer-hero hero-name="{{item.heroName}}" power="{{item.power}}"></polymer-hero>
     </template>
+    <add-hero on-new-hero="newHero"></add-hero>
   </template>
 
   <script>
@@ -25,9 +28,12 @@
             { heroName: 'Dardevil', power: 'Balèze en Kung-Fu' },
             { heroName: 'Batman', power: 'A plein de fric' }
           ]
-        }
+        },
       },
-
+      newHero: function (hero) {
+        this.push('heroes', {heroName: hero.detail.newName, power: hero.detail.newPower});
+        console.log(hero.detail, this.heroes);
+      }
     });
   </script>
 </dom-module>

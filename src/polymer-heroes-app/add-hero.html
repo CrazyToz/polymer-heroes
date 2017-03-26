@@ -1,0 +1,25 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+
+<dom-module id="add-hero">
+    <template>
+        <h1>Add an Hero</h1>
+        <paper-input label="Name" value="{{newName}}"></paper-input>
+        <paper-input label="Super Power" value="{{newPower}}"></paper-input>
+        <paper-button raised class="indigo" on-tap="addHero">Add</paper-button>
+    </template>
+
+    <script>
+        Polymer({
+            is: 'add-hero',
+            properties: {
+               newName: String,
+               newPower: String
+            },
+            addHero: function() {
+                this.fire('new-hero', {newName: this.newName, newPower: this.newPower});
+            }
+        });
+    </script>
+</dom-module>
