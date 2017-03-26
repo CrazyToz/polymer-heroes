@@ -1,0 +1,7 @@
+{
+  "name": "polymer-heroes",
+  "short_name": "polymer-heroes",
+  "description": "Learn Polymer basics",
+  "start_url": "/",
+  "display": "standalone"
+}
