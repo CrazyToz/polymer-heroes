@@ -1,13 +1,16 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="hero.html">>
 
 <dom-module id="polymer-heroes-app">
   <template>
     <style>
-      :host {
+       :host {
         display: block;
       }
     </style>
-    <h2>Hello [[prop1]]</h2>
+    <template is="dom-repeat" items="[[heroes]]">
+      <polymer-hero hero-name="[[item.heroName]]" power="[[item.power]]"></polymer-hero>
+    </template>
   </template>
 
   <script>
@@ -16,10 +19,13 @@
       is: 'polymer-heroes-app',
 
       properties: {
-        prop1: {
-          type: String,
-          value: 'polymer-heroes-app',
-        },
+        heroes: {
+          type: Array,
+          value: [
+            { heroName: 'Dardevil', power: 'Balèze en Kung-Fu' },
+            { heroName: 'Batman', power: 'A plein de fric' }
+          ]
+        }
       },
 
     });
