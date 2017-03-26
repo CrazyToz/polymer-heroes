@@ -1,0 +1,23 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="polymer-hero">
+    <template>
+        <h1>[[heroName]]</h1>
+        <p>[[power]]</p>
+    </template>
+
+    <script>
+        Polymer({
+            is: 'polymer-hero',
+            properties: {
+                heroName: {
+                    type: String,
+                    value: 'Inconu au bataillon'
+                },
+                power: {
+                    type: String
+                },
+            },
+        });
+    </script>
+</dom-module>
