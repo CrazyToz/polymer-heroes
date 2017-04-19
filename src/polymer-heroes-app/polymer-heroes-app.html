@@ -8,10 +8,17 @@
        :host {
         display: block;
       }
+      
+      ul {
+        margin: 0 0 2em 0;
+        list-style-type: none;
+        padding: 0;
+        width: 15em;
+      }
     </style>
     <h3>Heroes count : {{heroes.length}}</h3>
     <template is="dom-repeat" items="{{heroes}}">
-      <polymer-hero hero-name="{{item.heroName}}" power="{{item.power}}"></polymer-hero>
+      <polymer-hero hero="{{item}}"></polymer-hero>
     </template>
     <add-hero on-new-hero="newHero"></add-hero>
   </template>
@@ -25,14 +32,21 @@
         heroes: {
           type: Array,
           value: [
-            { heroName: 'Dardevil', power: 'Balèze en Kung-Fu' },
-            { heroName: 'Batman', power: 'A plein de fric' }
+            { id: 1, name: 'Dardevil', power: 'Balèze en Kung-Fu' },
+            { id: 2, name: 'Batman', power: 'A plein de fric' }
           ]
         },
       },
-      newHero: function (hero) {
-        this.push('heroes', {heroName: hero.detail.newName, power: hero.detail.newPower});
-        console.log(hero.detail, this.heroes);
+      newHero: function (newHero) {
+        var maxCode = 0;
+        var iterator = 0;
+        for (iterator; iterator < this.heroes.length; iterator++) {
+          if (this.heroes[iterator].id > maxCode) {
+            maxCode = this.heroes[iterator].id;
+          }
+        }
+
+        this.push('heroes', { id: maxCode + 1, name: newHero.detail.newName, power: newHero.detail.newPower });
       }
     });
   </script>

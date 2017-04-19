@@ -2,22 +2,43 @@
 
 <dom-module id="polymer-hero">
     <template>
-        <h1>[[heroName]]</h1>
-        <p>[[power]]</p>
+        <style>
+             :host {
+                display: inline-block;
+                cursor: pointer;
+                background-color: #EEE;
+                margin: .5em;
+                padding: .3em 0;
+                height: 1.6em;
+                border-radius: 4px;
+            }
+            
+            .badge {
+                display: inline-block;
+                font-size: small;
+                color: white;
+                padding: 0.8em 0.7em 0 0.7em;
+                background-color: #607D8B;
+                line-height: 1em;
+                position: relative;
+                top: -4px;
+                left: -1px;
+                height: 1.8em;
+                margin-right: .8em;
+                border-radius: 4px 0 0 4px;
+            }
+        </style>
+        <span class="badge">[[hero.id]]</span>[[hero.name]]
     </template>
 
     <script>
         Polymer({
             is: 'polymer-hero',
             properties: {
-                heroName: {
-                    type: String,
-                    value: 'Inconu au bataillon'
-                },
-                power: {
-                    type: String
-                },
-            },
+                hero: {
+                    type: Object
+                }
+            }
         });
     </script>
 </dom-module>
