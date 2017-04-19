@@ -4,16 +4,9 @@
 
 <dom-module id="add-hero">
     <template>
-        <style>
-            :host {
-                display: block;
-                width: 50%;
-            }
-        </style>
-        <h5>Add an Hero</h5>
         <paper-input label="Name" value="{{newName}}"></paper-input>
         <paper-input label="Super Power" value="{{newPower}}"></paper-input>
-        <paper-button raised class="indigo" on-tap="addHero">Add</paper-button>
+        <paper-button raised on-tap="addHero">Rejoint l'équipe</paper-button>
     </template>
 
     <script>

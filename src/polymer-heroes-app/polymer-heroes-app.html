@@ -7,19 +7,25 @@
     <style>
        :host {
         display: block;
+        --hero-fill-color: red;
+        --hero-text-color: white;
+      }
+
+      h3 {
+        text-align: center;
       }
       
-      ul {
-        margin: 0 0 2em 0;
-        list-style-type: none;
-        padding: 0;
-        width: 15em;
-      }
+     .container {
+       display: flex;
+       justify-content: center;
+     }
     </style>
-    <h3>Heroes count : {{heroes.length}}</h3>
-    <template is="dom-repeat" items="{{heroes}}">
+    <h3>Voici les {{heroes.length}} membres des {{team}}</h3>
+    <div class="container">
+      <template is="dom-repeat" items="{{heroes}}">
       <polymer-hero hero="{{item}}"></polymer-hero>
     </template>
+    </div>
     <add-hero on-new-hero="newHero"></add-hero>
   </template>
 
@@ -29,11 +35,15 @@
       is: 'polymer-heroes-app',
 
       properties: {
+        team: {
+          type: String,
+          value: 'Avengers'
+        },
         heroes: {
           type: Array,
           value: [
-            { id: 1, name: 'Dardevil', power: 'Balèze en Kung-Fu' },
-            { id: 2, name: 'Batman', power: 'A plein de fric' }
+            { id: 1, name: 'Dardevil', power: 'se battre dans un costume moulant' },
+            { id: 2, name: 'Batman', power: 'se battre dans un costume moulant en forme de chauve-souris' }
           ]
         },
       },
